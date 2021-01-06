@@ -19,7 +19,6 @@ int credit(void){
         printf("INVALID\n");
         return 0;
     }
-    // printf("%i\n",i);
     int sum1 = 0;
     int sum2 = 0;
     long x = n;
@@ -30,14 +29,11 @@ int credit(void){
     int d2;
     do
     {
-        // Remove last digit and add to sum1
         mod1 = x % 10;
         x = x / 10;
         sum1 = sum1 + mod1;
-        // Remove second last digit
         mod2 = x % 10;
         x = x / 10;
-        // Double second last digit and add digits to sum2
         mod2 = mod2 * 2;
         d1 = mod2 % 10;
         d2 = mod2 / 10;
