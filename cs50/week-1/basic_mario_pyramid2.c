@@ -1,4 +1,4 @@
-mario normal pyramid
+//mario normal pyramid
 
 #include <cs50.h>
 #include <stdio.h>
