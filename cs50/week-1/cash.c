@@ -7,7 +7,7 @@ int main(void){
     }
 
 void cashOutF (void){
-    bool condt = true;
+    //bool condt = true;
     int quarter = 25;
     int dime = 10;
     int nickel = 5;
@@ -20,17 +20,16 @@ void cashOutF (void){
     float customerpayment;
     do{
     customerpayment = get_float("Change: ");
-    if(customerpayment<=0){
-        condt = true;
-    }
-    else{
-        condt = false;
+    //if(customerpayment<=0){
+        //condt = true;}
+    //else{
+        //condt = false;
         int cp = round(customerpayment*100);
         while(cp>=quarter){
             cp -= quarter;
             numOfQ += 1;
            // printf("%i\n",cp);
-            }
+            //}
         while(cp>=dime){
             cp -= dime;
             numOfD +=1;
@@ -49,7 +48,7 @@ void cashOutF (void){
 
     }
     }
-    while(condt);
+    while(customerpayment<=0);
 numOfCoins = numOfQ + numOfD + numOfN + numOfP;
 //printf("number of quarters %i\n",numOfQ);
 //printf("number of dimes %i\n",numOfD);
