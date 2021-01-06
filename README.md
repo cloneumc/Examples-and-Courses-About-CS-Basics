@@ -6,3 +6,7 @@
 
 ## For ACSE
 * https://www.coursera.org/specializations/cs-fundamentals
+
+## For FreeCodeCamp
+* https://www.freecodecamp.org/learn
+* https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ
