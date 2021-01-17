@@ -6,7 +6,7 @@
 
 ## For ACSE
 * https://www.coursera.org/specializations/cs-fundamentals
-** little note: I will not put the answers for the coursera quizes and labs. I will only put here the concepts and their examples :)
+* little note: I will not put the answers for the coursera quizes and labs. I will only put here the concepts and their examples :)
 
 ## For FreeCodeCamp
 * https://www.freecodecamp.org/learn
