@@ -62,6 +62,5 @@ print("Büyük 50 ortalama: ",ortalama(buyuk50)," \nKüçük 50 ortalama: ", ort
 
 toplam = 0
 for i in range(1,23,3):
-    #print(i,i+3)
     toplam += i*(i+3)
 print(toplam)
