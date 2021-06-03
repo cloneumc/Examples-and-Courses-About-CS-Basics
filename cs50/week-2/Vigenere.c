@@ -1,35 +1,20 @@
-/**
-  * 
-  * cs50
-  * week 2
-  * vigenere.c assignment
-  * http://docs.cs50.net/2017/x/psets/2/pset2.html
-  *
-  * by: zangiku, the contrarian flower-lover
-  * 
-  * A program for implementing Vigenère's cipher algorithm to encrypt user-input messages with an multi-character alphabetical key
-  * 
-  * Comments include questions -- dear reader, please reply with your answers (and clap your hands) if you're generous and you know it 🙏
-  * 
-  */
-  
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
-// input cipher key at command line
+
 int main(int argc, string argv[]){
     
     int keyLength;
     
-    // per instructions -- terminate program if more than one key
+ 
     if(argc != 2){
 
         printf("error");
         return 1;
     
-    // check to ensure key characters are alphabetical
+    
     } else {
         
         keyLength = strlen(argv[1]);
@@ -42,7 +27,7 @@ int main(int argc, string argv[]){
         }
     }
 
-    // log command line cipher key input to array of int
+    
     char key[keyLength];
     
     for(int g = 0; g < keyLength; g++){
@@ -59,7 +44,7 @@ int main(int argc, string argv[]){
     char cipherText[strlen(plainText)];
     int plainLength = strlen(plainText);
     
-    // iterate over and encrypt each character in plaintext by the most int value of the most recent key element, wrapping around key when end reached, as necessary
+   
     for(int i = 0, j = 0; i < plainLength; i++){
 
         if(isalpha(plainText[i])){
@@ -88,21 +73,21 @@ int main(int argc, string argv[]){
             }
             
             j++;
-        // leave all non-alphabetical items as is    
+          
         } else {
             cipherText[i] = plainText[i];
         }
         
     }
     
-    // per instructions, print cipherText array with no newline
+    
     printf("ciphertext: ");
     
     for(int k = 0; k < plainLength; k++){
         
         printf("%c",cipherText[k]);
     }
-    // per instructions, print newline
+   
     printf("\n");
         
     return 0;
