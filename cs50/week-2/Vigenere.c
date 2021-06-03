@@ -1,58 +1,110 @@
+/**
+  * 
+  * cs50
+  * week 2
+  * vigenere.c assignment
+  * http://docs.cs50.net/2017/x/psets/2/pset2.html
+  *
+  * by: zangiku, the contrarian flower-lover
+  * 
+  * A program for implementing Vigenère's cipher algorithm to encrypt user-input messages with an multi-character alphabetical key
+  * 
+  * Comments include questions -- dear reader, please reply with your answers (and clap your hands) if you're generous and you know it 🙏
+  * 
+  */
+  
 #include <cs50.h>
-#include <ctype.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-int main(int argc, string argv[])
-{    
-    if (argc != 2)
-    {
-        printf("Wrong number of arguments. Please try again.\n");
-        
+// input cipher key at command line
+int main(int argc, string argv[]){
+    
+    int keyLength;
+    
+    // per instructions -- terminate program if more than one key
+    if(argc != 2){
+
+        printf("error");
         return 1;
-    }
-    else 
-    {
-        for (int i = 0, n = strlen(argv[1]); i < n; i++)
-        {
-            if (!isalpha(argv[1][i]))
-            {
-                printf("Key must be alphabetic chars only.");
-                
+    
+    // check to ensure key characters are alphabetical
+    } else {
+        
+        keyLength = strlen(argv[1]);
+        
+        for(int h = 0; h < keyLength; h++){
+            if(!isalpha(argv[1][h])){
+                printf("error");
                 return 1;
-            }    
+            }
         }
     }
+
+    // log command line cipher key input to array of int
+    char key[keyLength];
     
-    string k = argv[1];
-    int kLen = strlen(k);
-    
-    string op = get_string("input: ");
-    
-    for (int i = 0, j = 0, n = strlen(op); i < n; i++)
-    {            
-        int letterKey = tolower(k[j % kLen]) - 'a';
+    for(int g = 0; g < keyLength; g++){
         
-        if (isupper(op[i]))
-        {
-            printf("%c", 'A' + (op[i] - 'A' + letterKey) % 26);
+        key[g] = argv[1][g];
+        
+    }
+    
+    // prompt user for plaintext input
+    string plainText = get_string("plaintext:");
+    
+    // declare ciphertext array of characters
+    
+    char cipherText[strlen(plainText)];
+    int plainLength = strlen(plainText);
+    
+    // iterate over and encrypt each character in plaintext by the most int value of the most recent key element, wrapping around key when end reached, as necessary
+    for(int i = 0, j = 0; i < plainLength; i++){
+
+        if(isalpha(plainText[i])){
+            
+            if(isupper(key[j % keyLength])){
+                
+                if(isupper(plainText[i])){
+                
+                    cipherText[i] = ((((plainText[i] - 65) + (key[j % keyLength] - 65)) % 26) + 65);
+                
+                } else {
+                
+                    cipherText[i] = ((((plainText[i] - 97) + (key[j % keyLength] - 65)) % 26) + 97);
+                    
+                }
+            } else {
+                
+                if(isupper(plainText[i])){
+                
+                    cipherText[i] = ((((plainText[i] - 65) + (key[j % keyLength] - 97)) % 26) + 65);
+                
+                } else {
+                
+                    cipherText[i] = ((((plainText[i] - 97) + (key[j % keyLength] - 97)) % 26) + 97);
+                }
+            }
             
             j++;
+        // leave all non-alphabetical items as is    
+        } else {
+            cipherText[i] = plainText[i];
         }
-        else if (islower(op[i]))
-        {
-            printf("%c", 'a' + (op[i] - 'a' + letterKey) % 26);
-            j++;
-        }
-        else
-        {
-            printf("%c", op[i]);
-        }
+        
     }
     
-    printf("\n");
+    // per instructions, print cipherText array with no newline
+    printf("ciphertext: ");
     
+    for(int k = 0; k < plainLength; k++){
+        
+        printf("%c",cipherText[k]);
+    }
+    // per instructions, print newline
+    printf("\n");
+        
     return 0;
-}
 
+}
